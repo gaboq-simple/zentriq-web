@@ -12,10 +12,18 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        {/* dark → cream */}
+        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#1C1917] to-[#FAF6F1]" />
         <Manifesto />
         <Solutions />
+        {/* cream → dark */}
+        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#FAF6F1] to-[#1C1917]" />
         <Process />
+        {/* dark → cream */}
+        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#1C1917] to-[#FAF6F1]" />
         <Projects />
+        {/* cream → dark */}
+        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#FAF6F1] to-[#1C1917]" />
         <CTAFooter />
       </main>
     </>
