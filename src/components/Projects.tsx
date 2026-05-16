@@ -37,7 +37,7 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="text-[11px] uppercase tracking-[0.25em] text-muted font-heading font-medium mb-14"
+          className="text-eyebrow uppercase tracking-[0.25em] text-muted font-heading font-medium mb-14"
         >
           Proyectos
         </motion.p>
@@ -95,13 +95,13 @@ export default function Projects() {
 
               {/* Content */}
               <div className="p-5 pb-6">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-muted/40 font-heading mb-2">
+                <p className="text-eyebrow uppercase tracking-[0.2em] text-muted/40 font-heading mb-2">
                   {project.category}
                 </p>
-                <h3 className="font-heading text-[16px] font-medium text-cream tracking-tight mb-2">
+                <h3 className="font-heading text-body-lg font-medium text-cream tracking-tight mb-2">
                   {project.title}
                 </h3>
-                <p className="text-[12px] text-cream/25 leading-relaxed">
+                <p className="text-micro text-cream/25 leading-relaxed">
                   {project.description}
                 </p>
               </div>

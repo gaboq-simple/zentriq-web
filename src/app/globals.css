@@ -4,7 +4,6 @@
 :root {
   --coral: #D85A30;
   --deep-coral: #B04A25;
-  --light-coral: #E8956E;
   --cream: #FAF6F1;
   --warm-cream: #F3EDE6;
   --dark: #1C1917;
@@ -12,12 +11,36 @@
   --muted: #8A8078;
   --light-muted: #B5AFA8;
   --light-border: #E8E0D8;
+
+  /* Typography scale */
+  --text-eyebrow: 11px;
+  --text-micro: 12px;
+  --text-meta: 13px;
+  --text-body: 14px;
+  --text-body-lg: 16px;
+  --text-heading-sm: 24px;
+  --text-heading-md: 28px;
+  --text-heading: 32px;
+  --text-display-sm: 36px;
+  --text-display: 56px;
+  --text-display-lg: 60px;
+
+  /* Line heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Tracking */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-eyebrow: 0.08em;
 }
 
 @theme inline {
   --color-coral: var(--coral);
   --color-deep-coral: var(--deep-coral);
-  --color-light-coral: var(--light-coral);
   --color-cream: var(--cream);
   --color-warm-cream: var(--warm-cream);
   --color-dark: var(--dark);
@@ -27,6 +50,18 @@
   --color-light-border: var(--light-border);
   --font-heading: var(--font-space-grotesk);
   --font-body: var(--font-dm-sans);
+
+  --font-size-eyebrow: var(--text-eyebrow);
+  --font-size-micro: var(--text-micro);
+  --font-size-meta: var(--text-meta);
+  --font-size-body: var(--text-body);
+  --font-size-body-lg: var(--text-body-lg);
+  --font-size-heading-sm: var(--text-heading-sm);
+  --font-size-heading-md: var(--text-heading-md);
+  --font-size-heading: var(--text-heading);
+  --font-size-display-sm: var(--text-display-sm);
+  --font-size-display: var(--text-display);
+  --font-size-display-lg: var(--text-display-lg);
 }
 
 html {

@@ -43,7 +43,7 @@ export default function Process() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="text-[11px] uppercase tracking-[0.25em] text-muted/30 font-heading font-medium mb-16"
+          className="text-eyebrow uppercase tracking-[0.25em] text-muted/30 font-heading font-medium mb-16"
         >
           Cómo trabajamos
         </motion.p>
@@ -75,15 +75,15 @@ export default function Process() {
 
               {/* Number circle */}
               <div
-                className="w-14 h-14 rounded-full flex items-center justify-center text-[16px] font-heading font-medium mb-5 border border-cream/30 text-cream/90 bg-dark/40"
+                className="w-14 h-14 rounded-full flex items-center justify-center text-body-lg font-heading font-medium mb-5 border border-cream/30 text-cream/90 bg-dark/40"
               >
                 {step.num}
               </div>
 
-              <h3 className="font-heading text-[14px] font-medium text-cream mb-2 tracking-tight">
+              <h3 className="font-heading text-body font-medium text-cream mb-2 tracking-tight">
                 {step.title}
               </h3>
-              <p className="text-[12px] text-cream/65 leading-relaxed max-w-[180px]">
+              <p className="text-micro text-cream/65 leading-relaxed max-w-[180px]">
                 {step.description}
               </p>
 

@@ -80,7 +80,7 @@ export default function Navbar() {
             className="flex items-center gap-2.5 text-cream group"
           >
             <HexLogo />
-            <span className="font-heading text-[13px] font-medium tracking-[0.2em] uppercase">
+            <span className="font-heading text-meta font-medium tracking-[0.2em] uppercase">
               Zentriq
             </span>
           </button>
@@ -91,7 +91,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-[13px] text-light-muted hover:text-cream transition-colors duration-300 tracking-wide group"
+                className="relative text-meta text-light-muted hover:text-cream transition-colors duration-300 tracking-wide group"
               >
                 {link.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-coral transition-all duration-300 group-hover:w-full" />

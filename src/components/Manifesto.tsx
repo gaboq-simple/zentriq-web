@@ -18,13 +18,13 @@ export default function Manifesto() {
           <div>
             <motion.p
               variants={fadeInUp}
-              className="text-[11px] uppercase tracking-[0.25em] text-muted font-heading font-medium mb-5"
+              className="text-eyebrow uppercase tracking-[0.25em] text-muted font-heading font-medium mb-5"
             >
               Manifiesto
             </motion.p>
             <motion.h2
               variants={fadeInUp}
-              className="font-heading text-warm-dark text-[28px] sm:text-[32px] leading-[1.15] font-medium tracking-tight"
+              className="font-heading text-warm-dark text-heading-md sm:text-heading leading-[1.15] font-medium tracking-tight"
             >
               No somos una consultora.
               <br />
@@ -40,14 +40,14 @@ export default function Manifesto() {
           >
             <motion.p
               variants={fadeInUp}
-              className="text-[16px] text-muted leading-[1.7]"
+              className="text-body-lg text-muted leading-[1.7]"
             >
               Cada negocio tiene procesos que drenan tiempo, datos que nadie
               entiende, y herramientas que nadie usa.
             </motion.p>
             <motion.p
               variants={fadeInUp}
-              className="text-[16px] text-muted leading-[1.7]"
+              className="text-body-lg text-muted leading-[1.7]"
             >
               Nosotros vemos eso y pensamos: hay una forma mejor. Y la
               construimos. Sin presentaciones de 40 slides. Sin jerga. Solo

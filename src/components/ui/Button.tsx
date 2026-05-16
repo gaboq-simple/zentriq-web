@@ -65,9 +65,9 @@ const variantClasses: Record<NonNullable<ButtonBaseProps['variant']>, string> = 
 // ─── Clases por size ──────────────────────────────────────────────────────────
 
 const sizeClasses: Record<NonNullable<ButtonBaseProps['size']>, string> = {
-  sm:      'text-[13px] px-5 py-2',
-  default: 'text-[14px] px-7 py-3',
-  lg:      'text-[14px] px-8 py-3.5',
+  sm:      'text-meta px-5 py-2',
+  default: 'text-body px-7 py-3',
+  lg:      'text-body px-8 py-3.5',
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────

@@ -91,7 +91,7 @@ export default function Solutions() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="text-[11px] uppercase tracking-[0.25em] text-muted font-heading font-medium mb-6"
+          className="text-eyebrow uppercase tracking-[0.25em] text-muted font-heading font-medium mb-6"
         >
           Lo que resolvemos
         </motion.p>
@@ -101,7 +101,7 @@ export default function Solutions() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="font-heading text-[32px] md:text-[40px] font-medium text-warm-dark tracking-tight leading-[1.1] mb-16 max-w-2xl"
+          className="font-heading text-heading md:text-[40px] font-medium text-warm-dark tracking-tight leading-[1.1] mb-16 max-w-2xl"
         >
           Cuatro tipos de problemas que resolvemos bien.
         </motion.h2>
@@ -137,10 +137,10 @@ export default function Solutions() {
             variants={fadeInUp}
             className="mt-20 pt-8 border-t border-light-border flex flex-wrap items-center gap-x-6 gap-y-2"
           >
-            <span className="text-[11px] uppercase tracking-[0.2em] text-muted font-heading font-medium">
+            <span className="text-eyebrow uppercase tracking-[0.2em] text-muted font-heading font-medium">
               Stack principal
             </span>
-            <span className="text-[12px] text-muted/80 font-body tracking-wide">
+            <span className="text-micro text-muted/80 font-body tracking-wide">
               Next.js · React Native · TypeScript · Supabase · PostgreSQL · Stripe · Vercel
             </span>
           </motion.div>
@@ -164,10 +164,10 @@ function SolutionItem({
       <div className="w-10 h-10 rounded-md bg-dark text-coral flex items-center justify-center transition-colors duration-300 group-hover:bg-coral group-hover:text-cream">
         {icon}
       </div>
-      <h3 className="font-heading text-[16px] font-medium text-warm-dark tracking-tight">
+      <h3 className="font-heading text-body-lg font-medium text-warm-dark tracking-tight">
         {title}
       </h3>
-      <p className="text-[13px] text-muted leading-relaxed">
+      <p className="text-meta text-muted leading-relaxed">
         {description}
       </p>
     </div>

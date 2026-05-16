@@ -33,7 +33,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-          className="text-[11px] uppercase tracking-[0.25em] text-light-muted font-heading font-medium mb-6"
+          className="text-eyebrow uppercase tracking-[0.25em] text-light-muted font-heading font-medium mb-6"
         >
           Laboratorio de tecnología aplicada
         </motion.p>
@@ -42,7 +42,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
-          className="font-heading text-cream text-[36px] sm:text-[48px] lg:text-[60px] leading-[1.08] font-medium max-w-3xl tracking-tight"
+          className="font-heading text-cream text-display-sm sm:text-[48px] lg:text-display-lg leading-[1.08] font-medium max-w-3xl tracking-tight"
         >
           Encontramos el punto exacto
           <br className="hidden sm:block" /> donde intervenir
@@ -65,15 +65,15 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.55 }}
           className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mb-10 sm:mb-12"
         >
-          <span className="text-[13px] text-light-muted font-body">
+          <span className="text-meta text-light-muted font-body">
             Software en producción
           </span>
           <span className="hidden sm:inline-block w-px h-3 bg-cream/15" aria-hidden="true" />
-          <span className="text-[13px] text-light-muted font-body">
+          <span className="text-meta text-light-muted font-body">
             Equipos de 5 a 500 personas
           </span>
           <span className="hidden sm:inline-block w-px h-3 bg-cream/15" aria-hidden="true" />
-          <span className="text-[13px] text-light-muted font-body">
+          <span className="text-meta text-light-muted font-body">
             CDMX · Remoto LATAM
           </span>
         </motion.div>
@@ -96,7 +96,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.75 }}
-          className="text-[12px] text-cream/45 font-body mt-5 sm:mt-6 tracking-wide"
+          className="text-micro text-cream/45 font-body mt-5 sm:mt-6 tracking-wide"
         >
           Primera llamada de 20 min. Sin compromiso.
         </motion.p>

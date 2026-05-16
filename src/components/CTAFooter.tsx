@@ -18,7 +18,7 @@ export default function CTAFooter() {
         >
           <motion.h2
             variants={fadeInUp}
-            className="font-heading text-cream text-[26px] sm:text-[32px] leading-[1.15] font-medium tracking-tight max-w-md"
+            className="font-heading text-cream text-heading-md sm:text-heading leading-[1.15] font-medium tracking-tight max-w-md"
           >
             Tienes un problema.
             <br />
@@ -47,13 +47,13 @@ export default function CTAFooter() {
               />
               <circle cx="14" cy="15" r="1.5" fill="currentColor" />
             </svg>
-            <span className="text-[12px] tracking-[0.15em] font-heading uppercase">
+            <span className="text-micro tracking-[0.15em] font-heading uppercase">
               Zentriq México
             </span>
           </div>
 
           {/* Contact */}
-          <div className="flex items-center gap-6 text-[12px] text-cream/20 tracking-wide">
+          <div className="flex items-center gap-6 text-micro text-cream/20 tracking-wide">
             <a
               href="mailto:hola@zentriq.mx"
               className="hover:text-cream/40 transition-colors duration-300"
