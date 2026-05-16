@@ -126,9 +126,9 @@ export function animate(
     node.phase += node.phaseSpeed;
 
     // Draw hexagon with breathing
-    const breathe = 0.08 + Math.sin(node.phase) * 0.04;
+    const breathe = 0.15 + Math.sin(node.phase) * 0.05;
     drawHexagon(ctx, node.x, node.y, node.size, breathe);
-    drawNode(ctx, node.x, node.y, breathe + 0.1);
+    drawNode(ctx, node.x, node.y, breathe + 0.2);
   }
 
   // Draw connections
@@ -139,7 +139,7 @@ export function animate(
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < CONNECTION_DISTANCE) {
-        const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.08;
+        const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.18;
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
