@@ -64,7 +64,7 @@ export default function Process() {
               {/* Connecting line (desktop) */}
               {i < steps.length - 1 && (
                 <motion.div
-                  className="hidden lg:block absolute top-6 left-[calc(50%+24px)] w-[calc(100%-48px)] h-px bg-muted/20"
+                  className="hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] h-px bg-cream/20"
                   style={{ originX: 0 }}
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -75,7 +75,7 @@ export default function Process() {
 
               {/* Number circle */}
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center text-[13px] font-heading font-medium mb-5 border border-muted/20 text-muted/60"
+                className="w-14 h-14 rounded-full flex items-center justify-center text-[16px] font-heading font-medium mb-5 border border-cream/30 text-cream/90 bg-dark/40"
               >
                 {step.num}
               </div>
@@ -83,14 +83,14 @@ export default function Process() {
               <h3 className="font-heading text-[14px] font-medium text-cream mb-2 tracking-tight">
                 {step.title}
               </h3>
-              <p className="text-[12px] text-muted/40 leading-relaxed max-w-[180px]">
+              <p className="text-[12px] text-cream/65 leading-relaxed max-w-[180px]">
                 {step.description}
               </p>
 
               {/* Mobile connecting line */}
               {i < steps.length - 1 && (
                 <motion.div
-                  className="lg:hidden absolute left-6 top-14 w-px bg-muted/20"
+                  className="lg:hidden absolute left-7 top-[60px] w-px bg-cream/20"
                   style={{ height: 'calc(100% - 14px)', originY: 0 }}
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
