@@ -62,8 +62,27 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.6 }}
-          className="flex flex-wrap items-center gap-4 mt-10"
+          transition={{ duration: 0.6, ease: EASE, delay: 0.55 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mb-10 sm:mb-12"
+        >
+          <span className="text-[13px] text-light-muted font-body">
+            Software en producción
+          </span>
+          <span className="hidden sm:inline-block w-px h-3 bg-cream/15" aria-hidden="true" />
+          <span className="text-[13px] text-light-muted font-body">
+            Equipos de 5 a 500 personas
+          </span>
+          <span className="hidden sm:inline-block w-px h-3 bg-cream/15" aria-hidden="true" />
+          <span className="text-[13px] text-light-muted font-body">
+            CDMX · Remoto LATAM
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.65 }}
+          className="flex flex-wrap items-center gap-4"
         >
           <Button as="a" href="#soluciones" variant="primary" size="default">
             Ver lo que hacemos
@@ -72,6 +91,15 @@ export default function Hero() {
             Conocer al equipo
           </Button>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.75 }}
+          className="text-[12px] text-cream/45 font-body mt-5 sm:mt-6 tracking-wide"
+        >
+          Primera llamada de 20 min. Sin compromiso.
+        </motion.p>
       </div>
 
       {/* Scroll indicator */}
