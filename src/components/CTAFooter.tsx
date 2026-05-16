@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
+import Button from './ui/Button';
 
 export default function CTAFooter() {
   return (
@@ -22,16 +23,13 @@ export default function CTAFooter() {
             Tienes un problema.
             <br />
             Nosotros tenemos la forma
-            <span className="text-coral">.</span>
+            <span className="text-cream">.</span>
           </motion.h2>
 
           <motion.div variants={fadeInUp}>
-            <a
-              href="mailto:hola@zentriq.mx"
-              className="inline-flex items-center text-[14px] font-medium text-cream bg-coral hover:bg-deep-coral px-8 py-3.5 rounded-sm transition-all duration-300 hover:scale-[1.02] tracking-wide"
-            >
+            <Button as="a" href="mailto:hola@zentriq.mx" variant="primary" size="lg">
               Hablemos
-            </a>
+            </Button>
           </motion.div>
         </motion.div>
       </div>
@@ -50,7 +48,7 @@ export default function CTAFooter() {
               <circle cx="14" cy="15" r="1.5" fill="currentColor" />
             </svg>
             <span className="text-[12px] tracking-[0.15em] font-heading uppercase">
-              Zentriq Mexico
+              Zentriq México
             </span>
           </div>
 
@@ -62,7 +60,7 @@ export default function CTAFooter() {
             >
               hola@zentriq.mx
             </a>
-            <span>CDMX, Mexico</span>
+            <span>CDMX, México</span>
           </div>
         </div>
       </div>

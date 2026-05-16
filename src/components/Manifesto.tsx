@@ -18,7 +18,7 @@ export default function Manifesto() {
           <div>
             <motion.p
               variants={fadeInUp}
-              className="text-[11px] uppercase tracking-[0.25em] text-coral font-heading font-medium mb-5"
+              className="text-[11px] uppercase tracking-[0.25em] text-muted font-heading font-medium mb-5"
             >
               Manifiesto
             </motion.p>
@@ -29,7 +29,7 @@ export default function Manifesto() {
               No somos una consultora.
               <br />
               Somos los que lo resuelven
-              <span className="text-coral">.</span>
+              <span className="text-warm-dark">.</span>
             </motion.h2>
           </div>
 
@@ -51,7 +51,7 @@ export default function Manifesto() {
             >
               Nosotros vemos eso y pensamos: hay una forma mejor. Y la
               construimos. Sin presentaciones de 40 slides. Sin jerga. Solo
-              soluciones que al dia siguiente ya estan funcionando.
+              soluciones que al día siguiente ya están funcionando.
             </motion.p>
           </motion.div>
         </motion.div>
@@ -60,12 +60,12 @@ export default function Manifesto() {
       {/* Decorative concentric circles — bottom-right, partially clipped */}
       <div
         aria-hidden="true"
-        className="absolute bottom-0 right-0 -mb-20 -mr-20 opacity-[0.035] pointer-events-none hidden lg:block"
+        className="absolute bottom-0 right-0 -mb-20 -mr-20 opacity-[0.035] pointer-events-none hidden lg:block text-coral"
       >
         <svg width="300" height="300" viewBox="0 0 300 300">
-          <circle cx="150" cy="150" r="60" stroke="#D85A30" strokeWidth="0.8" fill="none" />
-          <circle cx="150" cy="150" r="100" stroke="#D85A30" strokeWidth="0.6" fill="none" />
-          <circle cx="150" cy="150" r="140" stroke="#D85A30" strokeWidth="0.4" fill="none" />
+          <circle cx="150" cy="150" r="60" stroke="currentColor" strokeWidth="0.8" fill="none" />
+          <circle cx="150" cy="150" r="100" stroke="currentColor" strokeWidth="0.6" fill="none" />
+          <circle cx="150" cy="150" r="140" stroke="currentColor" strokeWidth="0.4" fill="none" />
         </svg>
       </div>
     </section>

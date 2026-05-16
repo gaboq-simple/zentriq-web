@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HexNetwork from './HexNetwork';
+import Button from './ui/Button';
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
@@ -32,9 +33,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-          className="text-[11px] uppercase tracking-[0.25em] text-coral font-heading font-medium mb-6"
+          className="text-[11px] uppercase tracking-[0.25em] text-light-muted font-heading font-medium mb-6"
         >
-          Laboratorio de tecnologia aplicada
+          Laboratorio de tecnología aplicada
         </motion.p>
 
         <motion.h1
@@ -54,7 +55,7 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.4 }}
           className="text-[15px] text-muted leading-relaxed mt-6 max-w-[420px]"
         >
-          Automatizacion, datos y software a la medida.
+          Automatización, datos y software a la medida.
           Construimos lo que tu negocio necesita para dejar de perder tiempo.
         </motion.p>
 
@@ -64,21 +65,12 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.6 }}
           className="flex flex-wrap items-center gap-4 mt-10"
         >
-          <a
-            href="#soluciones"
-            className="inline-flex items-center text-[14px] font-medium text-cream bg-coral hover:bg-deep-coral px-7 py-3 rounded-sm transition-all duration-300 hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(216,90,48,0.25)] tracking-wide"
-          >
+          <Button as="a" href="#soluciones" variant="primary" size="default">
             Ver lo que hacemos
-          </a>
-          <a
-            href="#manifiesto"
-            className="group inline-flex items-center text-[14px] text-light-muted hover:text-cream transition-colors duration-300 tracking-wide gap-1"
-          >
+          </Button>
+          <Button as="a" href="#manifiesto" variant="link" size="default">
             Conocer al equipo
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-              &rarr;
-            </span>
-          </a>
+          </Button>
         </motion.div>
       </div>
 

@@ -5,7 +5,7 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 const solutions = [
   {
-    title: 'Automatizacion',
+    title: 'Automatización',
     description:
       'Identificamos las tareas repetitivas que consumen horas y las eliminamos. Tu equipo se enfoca en lo que realmente importa.',
     icon: (
@@ -19,7 +19,7 @@ const solutions = [
   {
     title: 'Software a la medida',
     description:
-      'Plataformas y apps disenadas para tu operacion. No adaptaciones genericas — soluciones que nacen de tu problema real.',
+      'Plataformas y apps diseñadas para tu operación. No adaptaciones genéricas — soluciones que nacen de tu problema real.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1" />
@@ -31,7 +31,7 @@ const solutions = [
   {
     title: 'Datos con sentido',
     description:
-      'Estructura, limpieza y visibilidad. Convertimos tu informacion en decisiones claras, no en reportes que nadie lee.',
+      'Estructura, limpieza y visibilidad. Convertimos tu información en decisiones claras, no en reportes que nadie lee.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1" />
@@ -41,9 +41,9 @@ const solutions = [
     ),
   },
   {
-    title: 'Implementacion tech',
+    title: 'Implementación tech',
     description:
-      'Adoptamos herramientas nuevas sin caos. Integracion limpia, capacitacion real, transicion sin drama.',
+      'Adoptamos herramientas nuevas sin caos. Integración limpia, capacitación real, transición sin drama.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path d="M4 10H8L10 6L12 14L14 10H16" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />

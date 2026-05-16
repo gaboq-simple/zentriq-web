@@ -10,23 +10,22 @@ const steps = [
   {
     num: '01',
     title: 'Escuchamos',
-    description: 'Entendemos el problema real, no el sintoma',
+    description: 'Entendemos el problema real, no el síntoma',
   },
   {
     num: '02',
-    title: 'Disenamos',
-    description: 'Prototipamos rapido, validamos contigo',
+    title: 'Diseñamos',
+    description: 'Prototipamos rápido, validamos contigo',
   },
   {
     num: '03',
     title: 'Construimos',
-    description: 'Codigo real, no demos bonitas',
+    description: 'Código real, no demos bonitas',
   },
   {
     num: '04',
     title: 'Funciona',
-    description: 'Deploy, soporte, iteracion continua',
-    highlight: true,
+    description: 'Deploy, soporte, iteración continua',
   },
 ];
 
@@ -46,7 +45,7 @@ export default function Process() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-[11px] uppercase tracking-[0.25em] text-muted/30 font-heading font-medium mb-16"
         >
-          Como trabajamos
+          Cómo trabajamos
         </motion.p>
 
         <motion.div
@@ -76,11 +75,7 @@ export default function Process() {
 
               {/* Number circle */}
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center text-[13px] font-heading font-medium mb-5 transition-colors ${
-                  step.highlight
-                    ? 'bg-coral/15 text-coral border border-coral/30'
-                    : 'border border-muted/20 text-muted/60'
-                }`}
+                className="w-12 h-12 rounded-full flex items-center justify-center text-[13px] font-heading font-medium mb-5 border border-muted/20 text-muted/60"
               >
                 {step.num}
               </div>

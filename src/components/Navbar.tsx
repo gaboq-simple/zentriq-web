@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from './ui/Button';
 
 const navLinks = [
   { label: 'Nosotros', href: '#manifiesto' },
@@ -96,12 +97,9 @@ export default function Navbar() {
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-coral transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
-            <a
-              href="#contacto"
-              className="text-[13px] font-medium text-cream bg-coral hover:bg-deep-coral px-5 py-2 rounded-sm transition-all duration-300 hover:scale-[1.02] tracking-wide"
-            >
+            <Button as="a" href="#contacto" variant="secondary" size="sm">
               Contacto
-            </a>
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
@@ -146,18 +144,21 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-2xl text-cream font-heading tracking-wide hover:text-coral transition-colors"
+                className="text-2xl text-cream font-heading tracking-wide hover:text-cream/70 transition-colors"
               >
                 {link.label}
               </a>
             ))}
-            <a
+            <Button
+              as="a"
               href="#contacto"
               onClick={() => setMobileOpen(false)}
-              className="text-lg font-medium text-cream bg-coral hover:bg-deep-coral px-8 py-3 rounded-sm transition-colors tracking-wide mt-4"
+              variant="primary"
+              size="lg"
+              className="text-lg mt-4"
             >
               Contacto
-            </a>
+            </Button>
           </motion.div>
         )}
       </AnimatePresence>
