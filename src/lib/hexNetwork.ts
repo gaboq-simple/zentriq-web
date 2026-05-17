@@ -25,6 +25,8 @@ const MOUSE_RADIUS = 180;
 const MOUSE_FORCE = 0.8;
 const RETURN_SPEED = 0.02;
 const DRIFT_SPEED = 0.15;
+const DRIFT_RADIUS = 8;
+const DRIFT_ORBITAL_SPEED = 0.0008;
 
 export function createHexNetwork(
   canvas: HTMLCanvasElement,
@@ -94,12 +96,17 @@ export function animate(
 ) {
   const ctx = canvas.getContext('2d')!;
   const { nodes, width, height } = state;
+  const time = performance.now();
 
   ctx.clearRect(0, 0, width, height);
 
   // Update nodes
   for (const node of nodes) {
-    // Mouse repulsion
+    // Drift orbital: target orbita alrededor de baseX/baseY usando phase única de cada nodo
+    const targetX = node.baseX + Math.cos(node.phase + time * DRIFT_ORBITAL_SPEED) * DRIFT_RADIUS;
+    const targetY = node.baseY + Math.sin(node.phase + time * DRIFT_ORBITAL_SPEED) * DRIFT_RADIUS;
+
+    // Mouse repulsion — se suma al drift, no lo reemplaza
     const dx = node.x - state.mouseX;
     const dy = node.y - state.mouseY;
     const dist = Math.sqrt(dx * dx + dy * dy);
@@ -110,9 +117,9 @@ export function animate(
       node.vy += (dy / dist) * force;
     }
 
-    // Return to base position
-    node.vx += (node.baseX - node.x) * RETURN_SPEED;
-    node.vy += (node.baseY - node.y) * RETURN_SPEED;
+    // Spring hacia target orbital (no hacia base estático)
+    node.vx += (targetX - node.x) * RETURN_SPEED;
+    node.vy += (targetY - node.y) * RETURN_SPEED;
 
     // Damping
     node.vx *= 0.95;
@@ -125,13 +132,14 @@ export function animate(
     // Update breathing phase
     node.phase += node.phaseSpeed;
 
-    // Draw hexagon with breathing
-    const breathe = 0.18 + Math.sin(node.phase) * 0.06;
+    // Draw hexagon with breathing — opacidad subida: 0.14–0.30
+    const breathe = 0.22 + Math.sin(node.phase) * 0.08;
     drawHexagon(ctx, node.x, node.y, node.size, breathe);
-    drawNode(ctx, node.x, node.y, breathe + 0.24);
+    // Nodos más visibles: 0.46–0.62
+    drawNode(ctx, node.x, node.y, breathe + 0.32);
   }
 
-  // Draw connections
+  // Draw connections — opacidad subida: max 0.32
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const dx = nodes[i].x - nodes[j].x;
@@ -139,7 +147,7 @@ export function animate(
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < CONNECTION_DISTANCE) {
-        const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.24;
+        const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.32;
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
