@@ -37,11 +37,34 @@ function HexLogo() {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.href.slice(1));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -87,16 +110,27 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="relative text-meta text-light-muted hover:text-cream transition-colors duration-300 tracking-wide group"
-              >
-                {link.label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-coral transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const id = link.href.slice(1);
+              const isActive = activeSection === id;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`relative text-meta tracking-wide transition-colors duration-300 ${
+                    isActive ? 'text-cream' : 'text-light-muted hover:text-cream'
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -bottom-1 left-0 h-px bg-coral transition-transform duration-300 origin-left w-full ${
+                      isActive ? 'scale-x-100' : 'scale-x-0'
+                    }`}
+                  />
+                </a>
+              );
+            })}
             <Button as="a" href="#contacto" variant="secondary" size="sm">
               Contacto
             </Button>

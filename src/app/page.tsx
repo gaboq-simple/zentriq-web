@@ -5,6 +5,7 @@ import Solutions from '@/components/Solutions';
 import Process from '@/components/Process';
 import Projects from '@/components/Projects';
 import CTAFooter from '@/components/CTAFooter';
+import SectionTransition from '@/components/ui/SectionTransition';
 
 export default function Home() {
   return (
@@ -12,18 +13,14 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        {/* dark → cream */}
-        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#1C1917] to-[#FAF6F1]" />
+        <SectionTransition from="dark" to="cream" />
         <Manifesto />
         <Solutions />
-        {/* cream → dark */}
-        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#FAF6F1] to-[#1C1917]" />
+        <SectionTransition from="cream" to="dark" />
         <Process />
-        {/* dark → cream */}
-        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#1C1917] to-[#FAF6F1]" />
+        <SectionTransition from="dark" to="cream" />
         <Projects />
-        {/* cream → dark */}
-        <div aria-hidden="true" className="h-16 bg-gradient-to-b from-[#FAF6F1] to-[#1C1917]" />
+        <SectionTransition from="cream" to="dark" />
         <CTAFooter />
       </main>
     </>
