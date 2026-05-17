@@ -57,7 +57,7 @@ export default function Projects() {
               className="group bg-dark rounded-lg overflow-hidden cursor-pointer border border-white/[0.06] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)] hover:border-white/[0.12]"
             >
               {/* Visual slot */}
-              <div className="relative aspect-[16/10] bg-warm-dark/80 overflow-hidden">
+              <div className="relative aspect-[16/10] bg-warm-dark overflow-hidden">
                 {/* Hex pattern background */}
                 <svg
                   className="absolute inset-0 w-full h-full text-cream/[0.06]"
@@ -95,13 +95,13 @@ export default function Projects() {
 
               {/* Content */}
               <div className="p-5 pb-6">
-                <p className="text-eyebrow uppercase tracking-[0.2em] text-muted/40 font-heading mb-2">
+                <p className="text-eyebrow uppercase tracking-[0.2em] text-cream/60 font-heading mb-2">
                   {project.category}
                 </p>
                 <h3 className="font-heading text-body-lg font-medium text-cream tracking-tight mb-2">
                   {project.title}
                 </h3>
-                <p className="text-micro text-cream/25 leading-relaxed">
+                <p className="text-micro text-cream/75 leading-relaxed">
                   {project.description}
                 </p>
               </div>
