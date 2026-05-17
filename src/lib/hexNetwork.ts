@@ -21,7 +21,7 @@ interface HexNetworkState {
 }
 
 const CONNECTION_DISTANCE = 160;
-const MOUSE_RADIUS = 140;
+const MOUSE_RADIUS = 180;
 const MOUSE_FORCE = 0.8;
 const RETURN_SPEED = 0.02;
 const DRIFT_SPEED = 0.15;
@@ -126,9 +126,9 @@ export function animate(
     node.phase += node.phaseSpeed;
 
     // Draw hexagon with breathing
-    const breathe = 0.15 + Math.sin(node.phase) * 0.05;
+    const breathe = 0.18 + Math.sin(node.phase) * 0.06;
     drawHexagon(ctx, node.x, node.y, node.size, breathe);
-    drawNode(ctx, node.x, node.y, breathe + 0.2);
+    drawNode(ctx, node.x, node.y, breathe + 0.24);
   }
 
   // Draw connections
@@ -139,7 +139,7 @@ export function animate(
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < CONNECTION_DISTANCE) {
-        const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.18;
+        const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.24;
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);

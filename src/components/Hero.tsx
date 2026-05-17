@@ -25,7 +25,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center bg-dark overflow-hidden">
       {/* Interactive hex network background */}
-      <HexNetwork nodeCount={45} className="z-0" />
+      <HexNetwork nodeCount={55} className="z-0" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16">
