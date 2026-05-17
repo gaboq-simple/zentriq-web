@@ -92,6 +92,9 @@ export default function CTAFooter() {
                 <a href="#proyectos" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
                   Proyectos
                 </a>
+                <a href="#faq" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
+                  FAQ
+                </a>
               </nav>
             </div>
 

@@ -4,6 +4,7 @@ import Manifesto from '@/components/Manifesto';
 import Solutions from '@/components/Solutions';
 import Process from '@/components/Process';
 import Projects from '@/components/Projects';
+import FAQ from '@/components/FAQ';
 import CTAFooter from '@/components/CTAFooter';
 import SectionTransition from '@/components/ui/SectionTransition';
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Process />
         <SectionTransition from="dark" to="cream" />
         <Projects />
+        <FAQ />
         <SectionTransition from="cream" to="dark" />
         <CTAFooter />
       </main>
