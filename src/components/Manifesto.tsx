@@ -49,9 +49,31 @@ export default function Manifesto() {
               Lo que operamos lo evolucionamos contigo.
             </motion.p>
 
+          </div>
+
+          {/* Right column */}
+          <motion.div
+            variants={staggerContainer}
+            className="flex flex-col gap-5"
+          >
+            <motion.p
+              variants={fadeInUp}
+              className="text-body-lg text-muted leading-[1.7]"
+            >
+              Cada negocio tiene procesos que drenan tiempo, datos que nadie
+              entiende, y herramientas que nadie usa.
+            </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="text-body-lg text-muted leading-[1.7]"
+            >
+              Nosotros vemos eso y pensamos: hay una forma mejor. Y la
+              construimos. Sin presentaciones de 40 slides. Sin jerga. Solo
+              soluciones que al día siguiente ya están funcionando.
+            </motion.p>
             <motion.div
               variants={fadeInUp}
-              className="hidden md:block mt-10"
+              className="hidden md:block mt-6"
               aria-hidden="true"
             >
               <svg width="320" height="240" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,28 +98,6 @@ export default function Manifesto() {
                 <circle cx="194" cy="130" r="3" fill="rgba(216,90,48,0.50)" />
               </svg>
             </motion.div>
-          </div>
-
-          {/* Right column */}
-          <motion.div
-            variants={staggerContainer}
-            className="flex flex-col gap-5"
-          >
-            <motion.p
-              variants={fadeInUp}
-              className="text-body-lg text-muted leading-[1.7]"
-            >
-              Cada negocio tiene procesos que drenan tiempo, datos que nadie
-              entiende, y herramientas que nadie usa.
-            </motion.p>
-            <motion.p
-              variants={fadeInUp}
-              className="text-body-lg text-muted leading-[1.7]"
-            >
-              Nosotros vemos eso y pensamos: hay una forma mejor. Y la
-              construimos. Sin presentaciones de 40 slides. Sin jerga. Solo
-              soluciones que al día siguiente ya están funcionando.
-            </motion.p>
           </motion.div>
         </motion.div>
       </div>

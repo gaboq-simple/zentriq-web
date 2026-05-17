@@ -54,7 +54,7 @@ export default function Projects() {
               key={project.title}
               variants={fadeInUp}
               style={{ transition: 'transform 280ms cubic-bezier(0.16,1,0.3,1), box-shadow 280ms cubic-bezier(0.16,1,0.3,1), border-color 280ms cubic-bezier(0.16,1,0.3,1)' }}
-              className="group bg-dark rounded-lg overflow-hidden cursor-pointer border border-white/[0.06] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)] hover:border-white/[0.12]"
+              className="group bg-dark rounded-lg overflow-hidden cursor-pointer border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.28)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.5)] hover:border-white/[0.12]"
             >
               {/* Visual slot */}
               <div className="relative aspect-[16/10] bg-warm-dark overflow-hidden">
