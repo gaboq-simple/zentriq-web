@@ -43,7 +43,7 @@ export default function Process() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="text-eyebrow uppercase tracking-[0.25em] text-muted/30 font-heading font-medium mb-16"
+          className="text-eyebrow uppercase tracking-[0.25em] text-cream/70 font-heading font-medium mb-16"
         >
           Cómo trabajamos
         </motion.p>

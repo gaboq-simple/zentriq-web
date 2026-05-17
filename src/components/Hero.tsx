@@ -33,7 +33,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-          className="text-eyebrow uppercase tracking-[0.25em] text-light-muted font-heading font-medium mb-6"
+          className="text-eyebrow uppercase tracking-[0.25em] text-cream/70 font-heading font-medium mb-6"
         >
           Laboratorio de tecnología aplicada
         </motion.p>
@@ -63,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.55 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mb-10 sm:mb-12"
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mb-8 sm:mb-10"
         >
           <span className="text-meta text-light-muted font-body">
             Software en producción
@@ -96,7 +96,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.75 }}
-          className="text-micro text-cream/45 font-body mt-5 sm:mt-6 tracking-wide"
+          className="text-micro text-cream/45 font-body mt-4 tracking-wide"
         >
           Primera llamada de 20 min. Sin compromiso.
         </motion.p>
