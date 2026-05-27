@@ -21,7 +21,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export default function EliminacionDeDatosPage() {
   return (
-    <LegalLayout title="Eliminación de Datos de Usuario" lastUpdated="26 de mayo de 2025">
+    <LegalLayout title="Eliminación de Datos de Usuario" lastUpdated="26 de mayo de 2026">
       <Section title="Tu derecho a la eliminación de datos">
         <p>
           En ZENTRIQ MEXICO respetamos tu derecho a solicitar la eliminación completa de tus

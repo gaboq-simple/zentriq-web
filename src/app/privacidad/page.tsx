@@ -21,7 +21,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export default function PrivacidadPage() {
   return (
-    <LegalLayout title="Aviso de Privacidad" lastUpdated="26 de mayo de 2025" showDraftBanner>
+    <LegalLayout title="Aviso de Privacidad" lastUpdated="26 de mayo de 2026" showDraftBanner>
       <Section title="1. Identidad del responsable">
         <p>
           ZENTRIQ MEXICO (en adelante &quot;Zentriq&quot;), con domicilio en Ciudad de

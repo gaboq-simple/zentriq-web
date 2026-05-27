@@ -21,7 +21,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export default function TerminosPage() {
   return (
-    <LegalLayout title="Términos y Condiciones" lastUpdated="26 de mayo de 2025" showDraftBanner>
+    <LegalLayout title="Términos y Condiciones" lastUpdated="26 de mayo de 2026" showDraftBanner>
       <Section title="1. Identificación del prestador">
         <p>
           Los presentes términos y condiciones regulan el uso de los servicios proporcionados por
