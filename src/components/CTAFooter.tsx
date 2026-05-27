@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import Button from './ui/Button';
@@ -27,7 +28,7 @@ export default function CTAFooter() {
           </motion.h2>
 
           <motion.div variants={fadeInUp}>
-            <Button as="a" href="mailto:hola@zentriq.mx" variant="primary" size="lg">
+            <Button as="a" href="mailto:contacto@zentriq.mx" variant="primary" size="lg">
               Hablemos
             </Button>
           </motion.div>
@@ -70,7 +71,7 @@ export default function CTAFooter() {
                 Estudio de software a la medida.
               </p>
               <p className="text-micro text-cream/45">
-                CDMX · México
+                Ciudad de México, México
               </p>
             </div>
 
@@ -105,24 +106,11 @@ export default function CTAFooter() {
               </h4>
               <div className="flex flex-col gap-3">
                 <a
-                  href="mailto:hola@zentriq.mx"
+                  href="mailto:contacto@zentriq.mx"
                   className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit"
                 >
-                  hola@zentriq.mx
+                  contacto@zentriq.mx
                 </a>
-                {/*
-                  Redes sociales — agregar aquí cuando las cuentas estén activas.
-                  Para cada red, replicar este patrón:
-
-                  <a
-                    href="https://linkedin.com/company/zentriq"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit"
-                  >
-                    LinkedIn
-                  </a>
-                */}
               </div>
             </div>
 
@@ -131,19 +119,17 @@ export default function CTAFooter() {
               <h4 className="text-eyebrow uppercase tracking-[0.08em] text-cream/55 font-heading font-medium">
                 Legal
               </h4>
-              <div className="flex flex-col gap-3">
-                {/*
-                  Cuando las páginas legales estén listas, reemplazar cada <span>
-                  por un <a> con las mismas clases hover que los links de Sitio:
-                  <a href="/privacidad" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                */}
-                <span className="text-meta text-cream/40 cursor-default w-fit" title="Próximamente">
+              <nav className="flex flex-col gap-3">
+                <Link href="/privacidad" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
                   Aviso de privacidad
-                </span>
-                <span className="text-meta text-cream/40 cursor-default w-fit" title="Próximamente">
+                </Link>
+                <Link href="/terminos" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
                   Términos de servicio
-                </span>
-              </div>
+                </Link>
+                <Link href="/eliminacion-de-datos" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
+                  Eliminación de datos
+                </Link>
+              </nav>
             </div>
 
           </div>
@@ -151,7 +137,7 @@ export default function CTAFooter() {
           {/* Línea final: copyright + status */}
           <div className="border-t border-cream/[0.06] pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p className="text-micro text-cream/45">
-              © 2026 Zentriq. Hecho en CDMX.
+              © {new Date().getFullYear()} ZENTRIQ MEXICO. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />

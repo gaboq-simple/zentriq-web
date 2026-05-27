@@ -85,9 +85,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: 'any' },
     ],
-    apple: '/apple-icon.png',
+    apple: '/apple-icon',
   },
 };
 
@@ -109,7 +108,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Zentriq',
+              name: 'ZENTRIQ MEXICO',
+              legalName: 'ZENTRIQ MEXICO',
               url: 'https://zentriq.mx',
               logo: 'https://zentriq.mx/icon.svg',
               description:
@@ -118,11 +118,12 @@ export default function RootLayout({
               address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'Ciudad de México',
+                addressRegion: 'CDMX',
                 addressCountry: 'MX',
               },
               contactPoint: {
                 '@type': 'ContactPoint',
-                email: 'hola@zentriq.mx',
+                email: 'contacto@zentriq.mx',
                 contactType: 'customer service',
                 areaServed: 'MX',
                 availableLanguage: ['Spanish'],
