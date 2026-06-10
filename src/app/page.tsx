@@ -4,9 +4,10 @@ import Manifesto from '@/components/Manifesto';
 import Solutions from '@/components/Solutions';
 import Process from '@/components/Process';
 import Projects from '@/components/Projects';
+import ConnectionSection from '@/components/ConnectionSection';
 import FAQ from '@/components/FAQ';
 import CTAFooter from '@/components/CTAFooter';
-import SectionTransition from '@/components/ui/SectionTransition';
+import SectionDivider from '@/components/ui/SectionDivider';
 
 export default function Home() {
   return (
@@ -14,15 +15,17 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <SectionTransition from="dark" to="cream" />
         <Manifesto />
+        <SectionDivider />
         <Solutions />
-        <SectionTransition from="cream" to="dark" />
+        <SectionDivider />
         <Process />
-        <SectionTransition from="dark" to="cream" />
+        <SectionDivider />
         <Projects />
+        <SectionDivider />
+        <ConnectionSection />
+        <SectionDivider />
         <FAQ />
-        <SectionTransition from="cream" to="dark" />
         <CTAFooter />
       </main>
     </>

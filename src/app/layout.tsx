@@ -1,19 +1,18 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, DM_Sans } from 'next/font/google';
+import { Geist, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from '@/components/Providers';
 
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+// Geist (Vercel) para todo el texto · JetBrains Mono solo para el stack técnico.
+const geist = Geist({
+  variable: '--font-geist',
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains',
   subsets: ['latin'],
-  weight: ['400', '500'],
   display: 'swap',
 });
 
@@ -98,7 +97,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-MX"
-      className={`${spaceGrotesk.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${geist.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>

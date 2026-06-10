@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { MARK_DATA_URI } from '@/components/icons/Logo';
 
 export const runtime = 'edge';
 export const alt = 'Zentriq — Estudio de software a la medida';
@@ -12,7 +13,7 @@ export default async function OGImage() {
         style={{
           width: '100%',
           height: '100%',
-          background: '#1C1917',
+          background: '#0A0A0F',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
@@ -22,24 +23,16 @@ export default async function OGImage() {
       >
         {/* Top: logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <svg width="48" height="56" viewBox="0 0 28 32" fill="none">
-            <path
-              d="M14 1 L26 8 V24 L14 31 L2 24 V8 Z"
-              stroke="#FAF6F1"
-              strokeWidth="2"
-              fill="none"
-            />
-            <circle cx="14" cy="16" r="2" fill="#D85A30" />
-          </svg>
+          <img src={MARK_DATA_URI} width={66} height={55} alt="" />
           <span
             style={{
-              color: '#FAF6F1',
-              fontSize: '32px',
-              letterSpacing: '0.1em',
-              fontWeight: 500,
+              color: '#E8E8ED',
+              fontSize: '36px',
+              letterSpacing: '-1px',
+              fontWeight: 600,
             }}
           >
-            ZENTRIQ
+            zentriq
           </span>
         </div>
 
@@ -47,7 +40,7 @@ export default async function OGImage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div
             style={{
-              color: '#D85A30',
+              color: '#00C2A8',
               fontSize: '20px',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
@@ -58,7 +51,7 @@ export default async function OGImage() {
           </div>
           <div
             style={{
-              color: '#FAF6F1',
+              color: '#E8E8ED',
               fontSize: '64px',
               lineHeight: 1.1,
               fontWeight: 600,
@@ -66,7 +59,7 @@ export default async function OGImage() {
             }}
           >
             Construimos automatización, datos y software.{' '}
-            <span style={{ color: '#D85A30' }}>Producción en 6-8 semanas.</span>
+            <span style={{ color: '#00C2A8' }}>Producción en 6-8 semanas.</span>
           </div>
         </div>
 
@@ -76,7 +69,7 @@ export default async function OGImage() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            color: '#B5AFA8',
+            color: '#9A9AA5',
             fontSize: '20px',
             letterSpacing: '0.08em',
           }}

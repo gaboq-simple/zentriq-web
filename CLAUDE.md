@@ -13,17 +13,24 @@ empresas medianas mexicanas que necesitan software custom y odian los
 discovery de 6 semanas y las presentaciones de 40 slides.
 
 ## Identidad visual
-- Color signature: coral #D85A30 (usar como acento, NO como color dominante)
-- Lenguaje visual: hexagonal / red de nodos (sutil, no saturado)
+- Tema: dark mode técnico. Fondo principal #0A0A0F, surfaces #12121A / #1A1A24 /
+  #24242F.
+- Color signature: teal #00C2A8 (acento único; hover #33D4BE). Se usa como línea,
+  texto y glow sutil, NUNCA como relleno saturado grande.
+- Lenguaje visual: corrientes de datos / campo de flujo + grid técnico sutil
+  (líneas 1px rgba(0,194,168,0.02) cada 20px). Preciso, de laboratorio, no neón.
 - Tono: directo, técnico, sin jerga, anti-marketing-corporativo
 - El sitio debe sentirse premium: nivel Linear / Vercel / Stripe, no plantilla
+- La fuente y el tratamiento de cards son la fuente de verdad de zentriq-sistema-diseno.md.
 
 ## Reglas no negociables
 1. **Acentos siempre correctos.** Este es un sitio en español. Cualquier 
    palabra sin acento es un bug crítico.
 2. **TypeScript strict mode** en todo el código nuevo.
 3. **Credenciales solo en env vars.**
-4. **El coral #D85A30 aparece máximo 2-3 veces por viewport.**
+4. **El teal #00C2A8 es el único acento.** Línea, texto y glow sutil; nunca
+   relleno saturado grande ni neón. Evitar gradientes neón, mesh, partículas
+   brillantes y colores saturados.
 5. **Sin Lorem Ipsum, sin placeholders tipo "VISTA DEL PROYECTO".** Si no 
    hay contenido real, mejor eliminar la sección.
 6. **Mobile first responsive.** Todos los cambios deben verse igual de bien 

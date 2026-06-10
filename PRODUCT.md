@@ -65,15 +65,18 @@ faltante es un bug crítico).
 5. **Motion con propósito.** Animación de entrada orquestada que se siente
    premium, no fade-on-scroll genérico en cada sección. El motion es parte del
    build, no un afterthought.
-6. **El coral es acento, no protagonista.** #D85A30 aparece máximo 2-3 veces por
-   viewport; el lenguaje hexagonal / de nodos es sutil, nunca saturado.
+6. **Dark mode técnico, teal como único acento.** Fondo oscuro #0A0A0F como
+   base; el teal #00C2A8 es el único acento y se usa como línea, texto y glow
+   sutil, nunca como relleno saturado grande. El lenguaje visual es corrientes
+   de datos / campo de flujo + grid técnico sutil: de laboratorio, nunca neón.
 
 ## Accessibility & Inclusion
 
-- Contraste WCAG AA mínimo en todo texto (body ≥4.5:1, large ≥3:1). Vigilar el
-  riesgo recurrente: texto muted gris (--muted #8A8078, --light-muted #B5AFA8)
-  sobre cream casi-blanco. Si el contraste está cerca, mover el color hacia el
-  ink (--dark / --warm-dark).
+- Contraste WCAG AA mínimo en todo texto (body ≥4.5:1, large ≥3:1). En el tema
+  oscuro vigilar: texto secundario #6B6B78 y terciario #4A4A55 sobre fondo
+  #0A0A0F (el terciario sólo para large/decorativo, no para body). El teal
+  #00C2A8 como texto/etiqueta sobre #0A0A0F debe validarse; usar #33D4BE si el
+  ratio queda corto. Verificar foco visible (no depender sólo del color).
 - Mobile first: todo debe verse igual de bien a 375px de ancho.
 - `prefers-reduced-motion: reduce` obligatorio en toda animación (ya implementado
   para las visuales de tarjeta; mantener el estándar en todo motion nuevo).

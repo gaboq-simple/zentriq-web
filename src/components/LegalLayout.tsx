@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Logo } from '@/components/icons/Logo';
 
 interface LegalLayoutProps {
   title: string;
@@ -18,27 +19,8 @@ export default function LegalLayout({
       {/* Header */}
       <header className="border-b border-cream/[0.08]">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 text-cream group"
-          >
-            <svg
-              width="22"
-              height="25"
-              viewBox="0 0 28 32"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M14 1L26.124 8V22L14 29L1.876 22V8L14 1Z"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-              <circle cx="14" cy="15" r="2" fill="currentColor" opacity="0.6" />
-            </svg>
-            <span className="font-heading text-meta font-medium tracking-[0.2em] uppercase">
-              Zentriq
-            </span>
+          <Link href="/" className="group rounded-sm">
+            <Logo theme="light" size={34} />
           </Link>
           <Link
             href="/"
