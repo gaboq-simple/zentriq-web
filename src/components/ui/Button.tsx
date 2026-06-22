@@ -56,10 +56,10 @@ function ArrowRight() {
 
 const variantClasses: Record<NonNullable<ButtonBaseProps['variant']>, string> = {
   primary:
-    'text-cream bg-coral hover:bg-deep-coral font-heading font-medium tracking-wide rounded-sm transition-all duration-300 hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(216,90,48,0.25)]',
+    'text-bg bg-teal hover:bg-teal-hover font-sans font-medium tracking-wide rounded-sm transition-all duration-300 hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(0,194,168,0.35)]',
   secondary:
-    'text-cream bg-transparent border border-white/20 hover:border-white hover:bg-white/5 font-heading font-medium tracking-wide rounded-sm transition-all duration-300',
-  link: 'group text-light-muted hover:text-cream bg-transparent font-heading font-medium tracking-wide gap-1 transition-colors duration-300',
+    'text-text bg-transparent border border-teal/40 hover:border-teal hover:bg-teal/5 font-sans font-medium tracking-wide rounded-sm transition-all duration-300 hover:shadow-[0_6px_24px_rgba(0,194,168,0.20)]',
+  link: 'group text-text-2 hover:text-teal bg-transparent font-sans font-medium tracking-wide gap-1 transition-colors duration-300',
 };
 
 // ─── Clases por size ──────────────────────────────────────────────────────────
@@ -76,7 +76,7 @@ export default function Button(props: ButtonProps) {
   const { variant, size = 'default', className = '', children } = props;
 
   const computedClass = [
-    'inline-flex items-center',
+    'inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
     variantClasses[variant],
     sizeClasses[size],
     className,

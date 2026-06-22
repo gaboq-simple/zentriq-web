@@ -2,18 +2,41 @@
 @source "../../src";
 
 :root {
-  --coral: #D85A30;
-  --deep-coral: #B04A25;
-  --cream: #FAF6F1;
-  --warm-cream: #F3EDE6;
-  --dark: #1C1917;
-  --warm-dark: #2A2420;
-  --muted: #8A8078;
-  --light-muted: #B5AFA8;
-  --light-border: #E8E0D8;
+  /* ─── Sistema de diseño Zentriq · teal/dark (fuente de verdad) ─────────── */
+  --bg: #0A0A0F;          /* fondo principal */
+  --surface: #12121A;     /* surface */
+  --card: #1A1A24;        /* cards */
+  --elevated: #24242F;    /* elevated */
+
+  --teal: #00C2A8;        /* acento único */
+  --teal-hover: #33D4BE;  /* acento hover / claro */
+
+  /* Escala teal de marca (sistema de logo nuevo). 400=--teal-hover, 500=--teal. */
+  --teal-50:  #EBFAF8;
+  --teal-100: #C7F2EC;
+  --teal-200: #8CE4D8;
+  --teal-300: #63E8D6;    /* highlight (gradiente del símbolo) */
+  --teal-600: #01A28D;
+  --teal-700: #018271;
+  --teal-800: #025F53;
+  --teal-900: #02423A;
+
+  --border: rgba(0, 194, 168, 0.12);        /* borde sutil */
+  --border-hover: rgba(0, 194, 168, 0.30);  /* borde hover */
+  --tint: rgba(0, 194, 168, 0.04);          /* fondo sutil acento */
+  --grid-line: rgba(0, 194, 168, 0.02);     /* grid técnico de fondo */
+
+  --text: #E8E8ED;        /* texto principal */
+  --text-2: #6B6B78;      /* texto secundario (acentos/labels, no cuerpo) */
+  --text-3: #4A4A55;      /* texto terciario / decorativo */
+  --soft: #9A9AA5;        /* gris legible para cuerpo sobre dark (~7:1, AA) */
+  --quiet: #7D7D88;       /* secundario discreto pero AA sobre dark (~4.9:1) */
+
+  /* Superficie de card flotante (Proyectos) */
+  --card-float: #101017;  /* card elevada, entre bg y surface */
 
   /* Typography scale */
-  --text-eyebrow: 11px;
+  --text-eyebrow: 13px;
   --text-micro: 12px;
   --text-meta: 13px;
   --text-body: 14px;
@@ -39,17 +62,40 @@
 }
 
 @theme inline {
-  --color-coral: var(--coral);
-  --color-deep-coral: var(--deep-coral);
-  --color-cream: var(--cream);
-  --color-warm-cream: var(--warm-cream);
-  --color-dark: var(--dark);
-  --color-warm-dark: var(--warm-dark);
-  --color-muted: var(--muted);
-  --color-light-muted: var(--light-muted);
-  --color-light-border: var(--light-border);
-  --font-heading: var(--font-space-grotesk);
-  --font-body: var(--font-dm-sans);
+  /* Nuevos tokens canónicos del sistema */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-elevated: var(--elevated);
+  --color-teal: var(--teal);
+  --color-teal-hover: var(--teal-hover);
+
+  /* Escala teal de marca como tokens Tailwind v4 (teal-50 … teal-900) */
+  --color-teal-50: var(--teal-50);
+  --color-teal-100: var(--teal-100);
+  --color-teal-200: var(--teal-200);
+  --color-teal-300: var(--teal-300);
+  --color-teal-400: var(--teal-hover);
+  --color-teal-500: var(--teal);
+  --color-teal-600: var(--teal-600);
+  --color-teal-700: var(--teal-700);
+  --color-teal-800: var(--teal-800);
+  --color-teal-900: var(--teal-900);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-tint: var(--tint);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-soft: var(--soft);
+  --color-quiet: var(--quiet);
+  --color-card-float: var(--card-float);
+
+  /* Fuentes: Geist para todo, JetBrains Mono para el stack técnico */
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-geist);
+  --font-body: var(--font-geist);
 
   --font-size-eyebrow: var(--text-eyebrow);
   --font-size-micro: var(--text-micro);
@@ -70,12 +116,17 @@ html {
 }
 
 body {
-  background: var(--cream);
-  color: var(--warm-dark);
-  font-family: var(--font-body), system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist), system-ui, sans-serif;
+  /* Grid técnico sutil: líneas 1px teal cada 20px */
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-/* Grain texture overlay for cream sections */
+/* Grain texture overlay */
 .grain::before {
   content: '';
   position: absolute;
@@ -99,76 +150,180 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark);
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--muted);
+  background: var(--elevated);
   border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-3);
 }
 
 /* Selection */
 ::selection {
-  background: var(--coral);
-  color: var(--cream);
+  background: var(--teal);
+  color: var(--bg);
 }
 
-/* ─── Project card visual animations ────────────────────────────────────── */
-
-/* Marketplace: peripheral node pulse on card hover */
-@keyframes node-pulse {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 1; }
+/* ─── Ken Burns: deriva/zoom muy lento del fondo de imagen del hero ─────────── */
+@keyframes ken-burns {
+  0%   { transform: scale(1.06) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.16) translate3d(-3%, -2%, 0); }
+  100% { transform: scale(1.06) translate3d(0, 0, 0); }
 }
 
-.group:hover .node-pulse-1 { animation: node-pulse 1.2s ease-in-out 0ms infinite; }
-.group:hover .node-pulse-2 { animation: node-pulse 1.2s ease-in-out 100ms infinite; }
-.group:hover .node-pulse-3 { animation: node-pulse 1.2s ease-in-out 200ms infinite; }
-.group:hover .node-pulse-4 { animation: node-pulse 1.2s ease-in-out 300ms infinite; }
-.group:hover .node-pulse-5 { animation: node-pulse 1.2s ease-in-out 400ms infinite; }
-.group:hover .node-pulse-6 { animation: node-pulse 1.2s ease-in-out 500ms infinite; }
-
-/* Automation: horizontal scan beam across grid */
-@keyframes scan-beam {
-  0%  { transform: translateX(-70px); opacity: 0.85; }
-  85% { opacity: 0.85; }
-  100%{ transform: translateX(70px);  opacity: 0; }
+.ken-burns {
+  animation: ken-burns 22s ease-in-out infinite;
+  will-change: transform;
 }
 
-.group:hover .scan-line { animation: scan-beam 1.4s ease-in-out forwards; }
-
-/* Data: bar scaleX fill left-to-right */
-@keyframes bar-fill {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns {
+    animation: none;
+    transform: none;
+  }
 }
 
-.bar-fill-1,
-.bar-fill-2,
-.bar-fill-3 {
-  transform-box: fill-box;
-  transform-origin: 0 50%;
+/* ─── Hero: entrada del titular (transform-only → visible por defecto, LCP-safe,
+   funciona sin JS; reduced-motion lo desactiva) ─────────────────────────────── */
+@keyframes hero-rise {
+  from { transform: translateY(14px); }
+  to   { transform: translateY(0); }
 }
 
-.group:hover .bar-fill-1 { animation: bar-fill 600ms cubic-bezier(0.16, 1, 0.3, 1) 0ms   both; }
-.group:hover .bar-fill-2 { animation: bar-fill 600ms cubic-bezier(0.16, 1, 0.3, 1) 120ms  both; }
-.group:hover .bar-fill-3 { animation: bar-fill 600ms cubic-bezier(0.16, 1, 0.3, 1) 240ms  both; }
+.hero-rise   { animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+.hero-rise-2 { animation-delay: 0.27s; }
 
-/* Data: line chart draw-on */
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise,
+  .hero-rise-2 {
+    animation: none;
+  }
+}
+
+/* ─── Project card visual animations (Proyectos) — trazos finos, sin glow ─── */
+
+/* Marketplace: el hub central late constante (escala sutil, siempre activo) */
+@keyframes hub-beat {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+.hub-beat { animation: hub-beat 2.4s ease-in-out infinite; }
+
+/* Marketplace: anillo que escala y se desvanece desde el hub al hover */
+@keyframes ripple {
+  0%   { opacity: 0.5; transform: scale(0.4); }
+  100% { opacity: 0;   transform: scale(2.4); }
+}
+
+.group:hover .ripple { animation: ripple 1.6s ease-out infinite; }
+
+/* Trazo que se dibuja: curvas del marketplace + línea de datos (al hover) */
 @keyframes line-draw {
   from { stroke-dashoffset: 200; }
   to   { stroke-dashoffset: 0; }
 }
 
-.group:hover .line-chart-path { animation: line-draw 800ms ease-in-out 600ms both; }
+.group:hover .flow-line       { animation: line-draw 2s ease-in-out both; }
+.group:hover .line-chart-path { animation: line-draw 1.8s ease-out both; }
+
+/* Automation: barra de escaneo que recorre la lista en loop al hover */
+@keyframes scan-vert {
+  0%   { transform: translateY(0);    opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateY(66px); opacity: 0; }
+}
+
+.group:hover .scan-vert { animation: scan-vert 2s ease-in-out infinite; }
+
+/* Automation: los checks se dibujan en secuencia al paso del escaneo */
+@keyframes check-draw {
+  0%   { stroke-dashoffset: 20; }
+  22%  { stroke-dashoffset: 0; }
+  80%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+.group:hover .check-draw-1 { animation: check-draw 2s ease-out 150ms  infinite; }
+.group:hover .check-draw-2 { animation: check-draw 2s ease-out 550ms  infinite; }
+.group:hover .check-draw-3 { animation: check-draw 2s ease-out 950ms  infinite; }
+.group:hover .check-draw-4 { animation: check-draw 2s ease-out 1350ms infinite; }
+
+/* Data: el último punto late (pulsa la opacidad), siempre activo */
+@keyframes data-beat {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.data-last-beat { animation: data-beat 1.8s ease-in-out infinite; }
 
 /* Disable all card visual animations for reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .node-pulse-1, .node-pulse-2, .node-pulse-3,
-  .node-pulse-4, .node-pulse-5, .node-pulse-6,
-  .scan-line,
-  .bar-fill-1, .bar-fill-2, .bar-fill-3,
-  .line-chart-path {
+  .hub-beat,
+  .ripple,
+  .flow-line,
+  .line-chart-path,
+  .scan-vert,
+  .check-draw-1, .check-draw-2, .check-draw-3, .check-draw-4,
+  .data-last-beat {
     animation: none !important;
   }
+}
+
+/* ─── Soluciones: realce de íconos al hover de la card (.group) ─────────────────
+   Por defecto los íconos están COMPLETOS (dibujados / ensamblados). El realce solo
+   corre en hover; al salir, vuelven al estado completo (nunca a medias). */
+@keyframes sol-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes sol-slide-l {
+  from { transform: translateX(-16px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes sol-slide-r {
+  from { transform: translateX(16px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes sol-pop {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* trazos normalizados (pathLength=1) → dibujados por defecto */
+.sol-draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.sol-pop { transform-box: fill-box; transform-origin: center; }
+
+/* secuencia por delays al hover */
+.group:hover .sol-d0 { animation: sol-draw 0.4s ease-in-out 0s    both; }
+.group:hover .sol-d1 { animation: sol-draw 0.4s ease-in-out 0.1s  both; }
+.group:hover .sol-d2 { animation: sol-draw 0.4s ease-in-out 0.2s  both; }
+.group:hover .sol-d3 { animation: sol-draw 0.4s ease-in-out 0.3s  both; }
+.group:hover .sol-d4 { animation: sol-draw 0.4s ease-in-out 0.4s  both; }
+.group:hover .sol-d5 { animation: sol-draw 0.4s ease-in-out 0.48s both; }
+.group:hover .sol-d6 { animation: sol-draw 0.4s ease-in-out 0.56s both; }
+.group:hover .sol-d7 { animation: sol-draw 0.4s ease-in-out 0.64s both; }
+.group:hover .sol-slide-l { animation: sol-slide-l 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.group:hover .sol-slide-r { animation: sol-slide-r 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.group:hover .sol-pop0 { animation: sol-pop 0.4s ease-out 0.5s both; }
+.group:hover .sol-pop1 { animation: sol-pop 0.45s ease-out 0.64s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .sol-d0, .group:hover .sol-d1, .group:hover .sol-d2, .group:hover .sol-d3,
+  .group:hover .sol-d4, .group:hover .sol-d5, .group:hover .sol-d6, .group:hover .sol-d7,
+  .group:hover .sol-slide-l, .group:hover .sol-slide-r,
+  .group:hover .sol-pop0, .group:hover .sol-pop1 {
+    animation: none !important;
+  }
+}
+
+/* ─── Logo zentriq: oculta la "cometa" animada del símbolo en reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .zq-comet { display: none; }
 }

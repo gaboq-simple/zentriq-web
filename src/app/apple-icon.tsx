@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { MARK_DATA_URI } from '@/components/icons/Logo';
 
 export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
@@ -13,12 +14,12 @@ export default function AppleIcon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#1C1917',
-          borderRadius: '36px',
-          fontFamily: 'system-ui, sans-serif',
+          background: '#15151D',
+          borderRadius: '40px',
         }}
       >
-        <span style={{ color: '#D85A30', fontSize: '110px', fontWeight: 700 }}>Z</span>
+        {/* Símbolo exacto rasterizado desde el data-URI */}
+        <img src={MARK_DATA_URI} width={132} height={110} alt="" />
       </div>
     ),
     { ...size },

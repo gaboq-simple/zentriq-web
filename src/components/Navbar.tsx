@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './ui/Button';
+import { Logo } from './icons/Logo';
 
 const navLinks = [
   { label: 'Nosotros', href: '#manifiesto' },
@@ -10,29 +11,6 @@ const navLinks = [
   { label: 'Proceso', href: '#proceso' },
   { label: 'Proyectos', href: '#proyectos' },
 ];
-
-function HexLogo() {
-  return (
-    <svg
-      width="28"
-      height="32"
-      viewBox="0 0 28 32"
-      fill="none"
-      className="animate-[spin_60s_linear_infinite]"
-    >
-      <path
-        d="M14 1L26.124 8V22L14 29L1.876 22V8L14 1Z"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <circle cx="14" cy="15" r="2" fill="currentColor" opacity="0.6" />
-      <line x1="14" y1="1" x2="14" y2="13" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-      <line x1="14" y1="17" x2="14" y2="29" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-      <line x1="1.876" y1="8" x2="12" y2="15" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-      <line x1="16" y1="15" x2="26.124" y2="8" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-    </svg>
-  );
-}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -90,22 +68,20 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-500 ${
           scrolled
-            ? 'bg-dark/80 backdrop-blur-xl border-b border-white/5'
-            : 'bg-transparent'
+            ? 'bg-bg/80 border-[rgba(0,194,168,0.12)]'
+            : 'bg-bg/60 border-[rgba(0,194,168,0.10)]'
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2.5 text-cream group"
+            aria-label="Zentriq — inicio"
+            className="group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-bg"
           >
-            <HexLogo />
-            <span className="font-heading text-meta font-medium tracking-[0.2em] uppercase">
-              Zentriq
-            </span>
+            <Logo size={34} />
           </button>
 
           {/* Desktop links */}
@@ -117,14 +93,14 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative text-meta tracking-wide transition-colors duration-300 ${
-                    isActive ? 'text-cream' : 'text-light-muted hover:text-cream'
+                  className={`relative text-meta tracking-wide transition-colors duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-bg ${
+                    isActive ? 'text-text' : 'text-soft hover:text-text'
                   }`}
                 >
                   {link.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute -bottom-1 left-0 h-px bg-coral transition-transform duration-300 origin-left w-full ${
+                    className={`absolute -bottom-1 left-0 h-px bg-teal transition-transform duration-300 origin-left w-full ${
                       isActive ? 'scale-x-100' : 'scale-x-0'
                     }`}
                   />
@@ -139,22 +115,23 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden relative w-8 h-8 flex items-center justify-center"
+            className="md:hidden relative w-11 h-11 flex items-center justify-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             aria-label="Menu"
+            aria-expanded={mobileOpen}
           >
             <div className="flex flex-col gap-1.5">
               <span
-                className={`block w-5 h-px bg-cream transition-all duration-300 origin-center ${
+                className={`block w-5 h-px bg-text transition-all duration-300 origin-center ${
                   mobileOpen ? 'rotate-45 translate-y-[3.5px]' : ''
                 }`}
               />
               <span
-                className={`block w-5 h-px bg-cream transition-all duration-300 ${
+                className={`block w-5 h-px bg-text transition-all duration-300 ${
                   mobileOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`block w-5 h-px bg-cream transition-all duration-300 origin-center ${
+                className={`block w-5 h-px bg-text transition-all duration-300 origin-center ${
                   mobileOpen ? '-rotate-45 -translate-y-[3.5px]' : ''
                 }`}
               />
@@ -171,14 +148,17 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed inset-0 z-40 bg-dark flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-bg flex flex-col items-center justify-center gap-8"
           >
+            <div className="absolute top-0 left-0 right-0 h-16 px-6 flex items-center">
+              <Logo size={34} />
+            </div>
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-2xl text-cream font-heading tracking-wide hover:text-cream/70 transition-colors"
+                className="text-2xl text-text font-sans tracking-wide hover:text-text/70 transition-colors"
               >
                 {link.label}
               </a>

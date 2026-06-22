@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
+
+const EASE_EXPO = [0.16, 1, 0.3, 1] as const; // ease-out-expo
 
 const faqs = [
   {
@@ -49,68 +50,85 @@ const faqs = [
 ];
 
 export default function FAQ() {
+  const reduce = useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  return (
-    <section id="faq" className="relative bg-cream grain overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 py-28 md:py-36">
+  const container: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  };
+  // cascada de las preguntas al entrar al viewport
+  const list: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  };
+  const fadeUp: Variants = reduce
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_EXPO } },
+      };
 
-        {/* Header */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mb-16"
+  return (
+    <section id="faq" className="bg-bg">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-4xl mx-auto px-6 py-24 md:py-32"
+      >
+        {/* Eyebrow */}
+        <motion.p
+          variants={fadeUp}
+          className="text-[13px] font-medium text-teal font-sans mb-5"
         >
-          <motion.p
-            variants={fadeInUp}
-            className="text-eyebrow uppercase tracking-[0.25em] text-muted font-heading font-medium mb-6"
-          >
-            Preguntas frecuentes
-          </motion.p>
-          <motion.h2
-            variants={fadeInUp}
-            className="font-heading text-heading md:text-display-sm font-medium text-warm-dark tracking-tight leading-[1.1] max-w-2xl"
-          >
-            Lo que la gente nos pregunta antes de contratarnos.
-          </motion.h2>
-        </motion.div>
+          Preguntas frecuentes
+        </motion.p>
+
+        {/* Titular */}
+        <motion.h2
+          variants={fadeUp}
+          className="font-sans text-text text-[clamp(32px,5vw,48px)] font-semibold tracking-[-0.03em] leading-[1.1] text-balance max-w-2xl"
+        >
+          Lo que la gente nos pregunta antes de contratarnos
+          <span className="text-teal">.</span>
+        </motion.h2>
 
         {/* Accordion */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="flex flex-col"
-        >
+        <motion.div variants={list} className="mt-12 md:mt-14 flex flex-col">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
                 key={index}
-                variants={fadeInUp}
-                className="border-b border-light-border last:border-b-0"
+                variants={fadeUp}
+                className="border-b border-white/[0.08] last:border-b-0"
               >
+                <h3>
                 <button
                   type="button"
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
-                  className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+                  className="w-full flex items-center justify-between gap-6 py-6 text-left group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
                 >
-                  <span className="font-heading text-body-lg md:text-[18px] font-medium text-warm-dark group-hover:text-coral transition-colors duration-300">
+                  <span
+                    id={`faq-question-${index}`}
+                    className={`font-sans text-[16px] md:text-[18px] font-medium transition-colors duration-300 ${
+                      isOpen ? 'text-teal' : 'text-text group-hover:text-teal'
+                    }`}
+                  >
                     {faq.question}
                   </span>
                   <span
                     aria-hidden="true"
-                    className={`flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform duration-300 ${
-                      isOpen ? 'rotate-45' : 'rotate-0'
+                    className={`flex-shrink-0 w-6 h-6 flex items-center justify-center transition-[transform,color] duration-300 ${
+                      isOpen ? 'rotate-45 text-teal' : 'text-soft group-hover:text-teal'
                     }`}
                   >
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -119,37 +137,39 @@ export default function FAQ() {
                         stroke="currentColor"
                         strokeWidth="1.5"
                         strokeLinecap="round"
-                        className="text-warm-dark/60 group-hover:text-coral transition-colors duration-300"
                       />
                     </svg>
                   </span>
                 </button>
+                </h3>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={`faq-answer-${index}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{
-                        duration: 0.3,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-6 pr-12 text-body-lg text-warm-dark/70 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* La región existe siempre (aria-controls válido); su contenido anima */}
+                <div
+                  id={`faq-answer-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${index}`}
+                >
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: reduce ? 0 : 0.3, ease: EASE_EXPO }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pb-6 text-[16px] text-soft leading-relaxed max-w-prose">
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
             );
           })}
         </motion.div>
-
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,33 +1,71 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import Button from './ui/Button';
+import { Logo } from './icons/Logo';
+
+const EASE_EXPO = [0.16, 1, 0.3, 1] as const; // ease-out-expo
+
+const siteLinks = [
+  { href: '#manifiesto', label: 'Nosotros' },
+  { href: '#soluciones', label: 'Soluciones' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#proyectos', label: 'Proyectos' },
+  { href: '#faq', label: 'FAQ' },
+];
+
+const legalLinks = [
+  { href: '/privacidad', label: 'Aviso de privacidad' },
+  { href: '/terminos', label: 'Términos de servicio' },
+  { href: '/eliminacion-de-datos', label: 'Eliminación de datos' },
+];
+
+const linkClass =
+  'text-meta text-soft hover:text-text transition-colors duration-300 w-fit rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-bg';
+const colHeadingClass = 'text-[13px] font-medium text-teal font-sans';
 
 export default function CTAFooter() {
+  const reduce = useReducedMotion();
+
+  const container: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  };
+  // cascada de las columnas del footer al entrar al viewport
+  const columns: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  };
+  const fadeUp: Variants = reduce
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_EXPO } },
+      };
+
   return (
-    <footer id="contacto" className="bg-dark">
-      {/* CTA Section */}
-      <div className="max-w-6xl mx-auto px-6 py-28 md:py-36">
+    <footer id="contacto" className="bg-bg">
+      {/* CTA */}
+      <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
         <motion.div
-          variants={staggerContainer}
+          variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
         >
           <motion.h2
-            variants={fadeInUp}
-            className="font-heading text-cream text-heading-md sm:text-heading leading-[1.15] font-medium tracking-tight max-w-md"
+            variants={fadeUp}
+            className="font-sans text-text text-[clamp(32px,5vw,48px)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance max-w-md"
           >
             Tienes un problema.
             <br />
             Nosotros tenemos la forma
-            <span className="text-cream">.</span>
+            <span className="text-teal">.</span>
           </motion.h2>
 
-          <motion.div variants={fadeInUp}>
+          <motion.div variants={fadeUp}>
             <Button as="a" href="mailto:contacto@zentriq.mx" variant="primary" size="lg">
               Hablemos
             </Button>
@@ -36,117 +74,77 @@ export default function CTAFooter() {
       </div>
 
       {/* Footer de 4 columnas */}
-      <div className="border-t border-cream/[0.08]">
+      <div className="border-t border-white/[0.08]">
         <div className="max-w-6xl mx-auto px-6 py-16">
-
           {/* Grid de columnas */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
-
+          <motion.div
+            variants={columns}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12"
+          >
             {/* Columna 1 — Brand */}
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-2.5 text-cream">
-                <svg
-                  width="22"
-                  height="25"
-                  viewBox="0 0 28 32"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M14 1L26.124 8V22L14 29L1.876 22V8L14 1Z"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  />
-                  <circle cx="14" cy="15" r="2" fill="currentColor" opacity="0.6" />
-                  <line x1="14" y1="1" x2="14" y2="13" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-                  <line x1="14" y1="17" x2="14" y2="29" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-                  <line x1="1.876" y1="8" x2="12" y2="15" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-                  <line x1="16" y1="15" x2="26.124" y2="8" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-                </svg>
-                <span className="font-heading text-meta tracking-[0.2em] uppercase">
-                  Zentriq
-                </span>
-              </div>
-              <p className="text-meta text-cream/60 leading-relaxed max-w-[200px]">
+            <motion.div variants={fadeUp} className="flex flex-col gap-4">
+              <Logo size={36} />
+              <p className="text-meta text-soft leading-relaxed max-w-[200px]">
                 Estudio de software a la medida.
               </p>
-              <p className="text-micro text-cream/45">
+              <p className="text-micro text-quiet">
                 Ciudad de México, México
               </p>
-            </div>
+            </motion.div>
 
             {/* Columna 2 — Sitio */}
-            <div className="flex flex-col gap-4">
-              <h4 className="text-eyebrow uppercase tracking-[0.08em] text-cream/55 font-heading font-medium">
-                Sitio
-              </h4>
-              <nav className="flex flex-col gap-3">
-                <a href="#manifiesto" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Nosotros
-                </a>
-                <a href="#soluciones" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Soluciones
-                </a>
-                <a href="#proceso" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Proceso
-                </a>
-                <a href="#proyectos" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Proyectos
-                </a>
-                <a href="#faq" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  FAQ
-                </a>
+            <motion.div variants={fadeUp} className="flex flex-col gap-4">
+              <h3 className={colHeadingClass}>Sitio</h3>
+              <nav aria-label="Navegación del sitio" className="flex flex-col gap-3">
+                {siteLinks.map((l) => (
+                  <a key={l.href} href={l.href} className={linkClass}>
+                    {l.label}
+                  </a>
+                ))}
               </nav>
-            </div>
+            </motion.div>
 
             {/* Columna 3 — Contacto */}
-            <div className="flex flex-col gap-4">
-              <h4 className="text-eyebrow uppercase tracking-[0.08em] text-cream/55 font-heading font-medium">
-                Contacto
-              </h4>
+            <motion.div variants={fadeUp} className="flex flex-col gap-4">
+              <h3 className={colHeadingClass}>Contacto</h3>
               <div className="flex flex-col gap-3">
-                <a
-                  href="mailto:contacto@zentriq.mx"
-                  className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit"
-                >
+                <a href="mailto:contacto@zentriq.mx" className={linkClass}>
                   contacto@zentriq.mx
                 </a>
               </div>
-            </div>
+            </motion.div>
 
             {/* Columna 4 — Legal */}
-            <div className="flex flex-col gap-4">
-              <h4 className="text-eyebrow uppercase tracking-[0.08em] text-cream/55 font-heading font-medium">
-                Legal
-              </h4>
-              <nav className="flex flex-col gap-3">
-                <Link href="/privacidad" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Aviso de privacidad
-                </Link>
-                <Link href="/terminos" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Términos de servicio
-                </Link>
-                <Link href="/eliminacion-de-datos" className="text-meta text-cream/70 hover:text-cream transition-colors duration-300 w-fit">
-                  Eliminación de datos
-                </Link>
+            <motion.div variants={fadeUp} className="flex flex-col gap-4">
+              <h3 className={colHeadingClass}>Legal</h3>
+              <nav aria-label="Enlaces legales" className="flex flex-col gap-3">
+                {legalLinks.map((l) => (
+                  <Link key={l.href} href={l.href} className={linkClass}>
+                    {l.label}
+                  </Link>
+                ))}
               </nav>
-            </div>
-
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Línea final: copyright + status */}
-          <div className="border-t border-cream/[0.06] pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <p className="text-micro text-cream/45">
-              © {new Date().getFullYear()} ZENTRIQ MEXICO. Todos los derechos reservados.
+          <div className="border-t border-white/[0.08] pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-micro text-quiet">
+              © {new Date().getFullYear()} Zentriq México. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-              <span className="text-micro text-cream/55 tracking-wide">
+              <span
+                className="inline-block w-2 h-2 rounded-full bg-teal animate-pulse motion-reduce:animate-none"
+                aria-hidden="true"
+              />
+              <span className="text-micro text-soft tracking-wide">
                 Todos los sistemas operativos
               </span>
             </div>
           </div>
-
         </div>
       </div>
     </footer>

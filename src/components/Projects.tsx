@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import ProjectCardVisual, { type ProjectVisual } from '@/components/ProjectCardVisual';
+
+const EASE_EXPO = [0.16, 1, 0.3, 1] as const; // ease-out-expo
 
 const projects: { category: string; title: string; description: string; visual: ProjectVisual }[] = [
   {
@@ -29,86 +30,99 @@ const projects: { category: string; title: string; description: string; visual: 
 ];
 
 export default function Projects() {
+  const reduce = useReducedMotion();
+
+  const container: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  };
+  // cascada de las 3 cards al entrar al viewport
+  const cardsRow: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+  };
+  const fadeUp: Variants = reduce
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_EXPO } },
+      };
+  // card: entrada + estado "hover" (elevación). El borde teal se maneja por CSS.
+  const card: Variants = reduce
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_EXPO } },
+        hover: { y: -6, transition: { duration: 0.3, ease: 'easeOut' } },
+      };
+
   return (
-    <section id="proyectos" className="relative bg-cream grain">
-      <div className="max-w-6xl mx-auto px-6 py-28 md:py-36">
+    <section id="proyectos" className="bg-bg">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-6xl mx-auto px-6 py-24 md:py-32"
+      >
+        {/* Eyebrow */}
         <motion.p
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="text-eyebrow uppercase tracking-[0.25em] text-muted font-heading font-medium mb-14"
+          variants={fadeUp}
+          className="text-[13px] font-medium text-teal font-sans mb-5"
         >
-          Proyectos
+          Lo que construimos
         </motion.p>
 
+        {/* Titular */}
+        <motion.h2
+          variants={fadeUp}
+          className="font-sans text-text text-[clamp(32px,5vw,48px)] font-semibold tracking-[-0.03em] leading-[1.1] text-balance max-w-2xl"
+        >
+          El tipo de soluciones que diseñamos
+          <span className="text-teal">.</span>
+        </motion.h2>
+
+        {/* Línea de apoyo — framing honesto: son ejemplos, no clientes reales */}
+        <motion.p
+          variants={fadeUp}
+          className="text-[14px] text-soft leading-[1.6] mt-4 max-w-xl"
+        >
+          Ejemplos representativos de lo que hacemos bien. Cada proyecto, de la idea a producción.
+        </motion.p>
+
+        {/* Cards — 1 col móvil → 3 cols desde md */}
         <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={cardsRow}
+          className="mt-12 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-5"
         >
           {projects.map((project) => (
-            <motion.div
+            <motion.article
               key={project.title}
-              variants={fadeInUp}
-              style={{ transition: 'transform 280ms cubic-bezier(0.16,1,0.3,1), box-shadow 280ms cubic-bezier(0.16,1,0.3,1), border-color 280ms cubic-bezier(0.16,1,0.3,1)' }}
-              className="group bg-dark rounded-lg overflow-hidden cursor-pointer border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.28)] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.5)] hover:border-white/[0.12]"
+              variants={card}
+              whileHover={reduce ? undefined : 'hover'}
+              className="group rounded-[14px] overflow-hidden bg-card-float border border-white/[0.08] transition-colors duration-300 hover:border-teal/30"
             >
-              {/* Visual slot */}
-              <div className="relative aspect-[16/10] bg-warm-dark overflow-hidden">
-                {/* Hex pattern background */}
-                <svg
-                  className="absolute inset-0 w-full h-full text-cream/[0.06]"
-                  viewBox="0 0 200 125"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <pattern id={`hex-${project.category}`} x="0" y="0" width="40" height="46" patternUnits="userSpaceOnUse">
-                    <path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="currentColor" strokeWidth="0.3" fill="none" />
-                  </pattern>
-                  <rect width="100%" height="100%" fill={`url(#hex-${project.category})`} />
-                </svg>
-
-                {/* Project visual */}
+              {/* Slot visual — line-art teal sobre el fondo oscuro de la card */}
+              <div className="relative aspect-[16/11] overflow-hidden border-b border-white/[0.08]">
                 <ProjectCardVisual variant={project.visual} />
-
-                {/* Hover arrow */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:bg-cream/10">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    className="text-cream/60 group-hover:text-cream transition-colors duration-300 transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  >
-                    <path
-                      d="M4 10L10 4M10 4H5M10 4V9"
-                      stroke="currentColor"
-                      strokeWidth="1.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
               </div>
 
-              {/* Content */}
-              <div className="p-5 pb-6">
-                <p className="text-eyebrow uppercase tracking-[0.2em] text-cream/60 font-heading mb-2">
+              {/* Contenido */}
+              <div className="p-5">
+                <p className="text-[13px] font-medium text-teal font-sans">
                   {project.category}
                 </p>
-                <h3 className="font-heading text-body-lg font-medium text-cream tracking-tight mb-2">
+                <h3 className="text-[16px] font-semibold text-text tracking-[-0.01em] mt-3">
                   {project.title}
                 </h3>
-                <p className="text-micro text-cream/75 leading-relaxed">
+                <p className="text-[13px] text-soft leading-[1.55] mt-2">
                   {project.description}
                 </p>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
