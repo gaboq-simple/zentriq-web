@@ -5,39 +5,12 @@ import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import { Logo } from '@/components/icons/Logo';
 import ChatGlass from '@/components/zlot/ChatGlass';
+import HowItWorks from '@/components/zlot/HowItWorks';
+import BusinessDashboard from '@/components/zlot/BusinessDashboard';
+import WhoIsItFor from '@/components/zlot/WhoIsItFor';
+import WhoForBackdrop from '@/components/zlot/WhoForBackdrop';
 
 const EASE_EXPO = [0.16, 1, 0.3, 1] as const; // ease-out-expo
-
-const steps = [
-  {
-    number: '01',
-    title: 'Conectas tu WhatsApp',
-    description:
-      'Tu negocio obtiene su propio número de WhatsApp Business verificado a ' +
-      'través de nuestra plataforma. Configuración guiada, sin complicaciones técnicas.',
-  },
-  {
-    number: '02',
-    title: 'Tus clientes escriben',
-    description:
-      'Los clientes envían un mensaje para agendar. Zlot responde automáticamente ' +
-      'con los horarios disponibles y opciones de servicio.',
-  },
-  {
-    number: '03',
-    title: 'La cita se agenda sola',
-    description:
-      'Confirmación instantánea, recordatorios automáticos antes de la cita, y ' +
-      'gestión completa desde un dashboard.',
-  },
-];
-
-const audiences = [
-  { icon: '✂', label: 'Barberías y salones' },
-  { icon: '◉', label: 'Estudios de tatuaje' },
-  { icon: '✦', label: 'Consultorios y clínicas' },
-  { icon: '▣', label: 'Negocios de servicios con citas' },
-];
 
 function ClockIcon() {
   return (
@@ -292,48 +265,11 @@ export default function ZlotPage() {
           </div>
         </section>
 
-        {/* ¿Cómo funciona? */}
-        <section id="como-funciona" className="bg-bg">
-          <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <motion.p
-                variants={fadeUp}
-                className="text-[13px] font-medium text-teal font-sans mb-5"
-              >
-                ¿Cómo funciona?
-              </motion.p>
-              <motion.h2
-                variants={fadeUp}
-                className="font-sans text-text text-[clamp(32px,5vw,48px)] leading-[1.1] font-semibold tracking-[-0.03em] mb-16 max-w-lg"
-              >
-                Tres pasos. Cero fricciones.
-              </motion.h2>
+        {/* ¿Cómo funciona? (animada) */}
+        <HowItWorks />
 
-              <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-                {steps.map((step) => (
-                  <motion.div
-                    key={step.number}
-                    variants={fadeUp}
-                    className="border border-white/[0.08] rounded-sm p-8"
-                  >
-                    <span className="font-mono text-[28px] text-teal leading-none">
-                      {step.number}
-                    </span>
-                    <h3 className="font-sans text-text text-[17px] font-semibold mt-4 mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-[14px] text-soft leading-relaxed">{step.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        {/* Tu negocio en tu bolsillo (dashboard) */}
+        <BusinessDashboard />
 
         {/* Tecnología oficial de Meta */}
         <section className="bg-surface">
@@ -409,72 +345,35 @@ export default function ZlotPage() {
           </div>
         </section>
 
-        {/* ¿Para quién es Zlot? */}
-        <section className="bg-bg">
-          <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <motion.p
-                variants={fadeUp}
-                className="text-[13px] font-medium text-teal font-sans mb-5"
-              >
-                ¿Para quién es?
-              </motion.p>
-              <motion.h2
-                variants={fadeUp}
-                className="font-sans text-text text-[clamp(32px,5vw,48px)] leading-[1.1] font-semibold tracking-[-0.03em] mb-12 max-w-lg"
-              >
-                Para negocios que viven de las citas
-              </motion.h2>
+        {/* ¿Para quién es? + CTA Final sobre campo de ondas 3D continuo */}
+        <WhoForBackdrop>
+          <WhoIsItFor />
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {audiences.map((item) => (
-                  <motion.div
-                    key={item.label}
-                    variants={fadeUp}
-                    className="border border-white/[0.08] rounded-sm p-6 flex items-center gap-4"
-                  >
-                    <span className="text-[24px] text-teal" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                    <span className="font-sans text-[15px] text-text font-semibold">
-                      {item.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* CTA Final */}
-        <section className="border-t border-white/[0.08]">
-          <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
-            >
-              <motion.h2
-                variants={fadeUp}
-                className="font-sans text-text text-[clamp(32px,5vw,48px)] leading-[1.1] font-semibold tracking-[-0.03em] max-w-md"
+          {/* CTA Final */}
+          <section className="border-t border-white/[0.08]">
+            <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
+              <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
               >
-                ¿Quieres automatizar tus citas?
-              </motion.h2>
-              <motion.div variants={fadeUp}>
-                <Button as="a" href="mailto:contacto@zentriq.mx" variant="primary" size="lg">
-                  Escríbenos
-                </Button>
+                <motion.h2
+                  variants={fadeUp}
+                  className="font-sans text-text text-[clamp(32px,5vw,48px)] leading-[1.1] font-semibold tracking-[-0.03em] max-w-md"
+                >
+                  ¿Quieres automatizar tus citas?
+                </motion.h2>
+                <motion.div variants={fadeUp}>
+                  <Button as="a" href="mailto:contacto@zentriq.mx" variant="primary" size="lg">
+                    Escríbenos
+                  </Button>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </div>
-        </section>
+            </div>
+          </section>
+        </WhoForBackdrop>
       </main>
 
       {/* Footer */}
