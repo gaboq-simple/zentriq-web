@@ -11,6 +11,16 @@
   --teal: #00C2A8;        /* acento único */
   --teal-hover: #33D4BE;  /* acento hover / claro */
 
+  /* Escala teal de marca (sistema de logo nuevo). 400=--teal-hover, 500=--teal. */
+  --teal-50:  #EBFAF8;
+  --teal-100: #C7F2EC;
+  --teal-200: #8CE4D8;
+  --teal-300: #63E8D6;    /* highlight (gradiente del símbolo) */
+  --teal-600: #01A28D;
+  --teal-700: #018271;
+  --teal-800: #025F53;
+  --teal-900: #02423A;
+
   --border: rgba(0, 194, 168, 0.12);        /* borde sutil */
   --border-hover: rgba(0, 194, 168, 0.30);  /* borde hover */
   --tint: rgba(0, 194, 168, 0.04);          /* fondo sutil acento */
@@ -24,19 +34,6 @@
 
   /* Superficie de card flotante (Proyectos) */
   --card-float: #101017;  /* card elevada, entre bg y surface */
-
-  /* ─── Alias temporales (migración coral/cream → teal/dark) ─────────────────
-     Mantienen "viéndose" las secciones aún no migradas. Se RETIRAN al final,
-     junto con cualquier clase bg-cream / text-coral / text-warm-dark, etc. */
-  --coral: var(--teal);
-  --deep-coral: var(--teal-hover);
-  --cream: var(--bg);
-  --warm-cream: var(--surface);
-  --dark: var(--text);        /* antes texto oscuro sobre cream → ahora texto claro */
-  --warm-dark: var(--text);
-  --muted: var(--text-2);
-  --light-muted: var(--text-3);
-  --light-border: var(--border);
 
   /* Typography scale */
   --text-eyebrow: 13px;
@@ -72,6 +69,18 @@
   --color-elevated: var(--elevated);
   --color-teal: var(--teal);
   --color-teal-hover: var(--teal-hover);
+
+  /* Escala teal de marca como tokens Tailwind v4 (teal-50 … teal-900) */
+  --color-teal-50: var(--teal-50);
+  --color-teal-100: var(--teal-100);
+  --color-teal-200: var(--teal-200);
+  --color-teal-300: var(--teal-300);
+  --color-teal-400: var(--teal-hover);
+  --color-teal-500: var(--teal);
+  --color-teal-600: var(--teal-600);
+  --color-teal-700: var(--teal-700);
+  --color-teal-800: var(--teal-800);
+  --color-teal-900: var(--teal-900);
   --color-border: var(--border);
   --color-border-hover: var(--border-hover);
   --color-tint: var(--tint);
@@ -81,17 +90,6 @@
   --color-soft: var(--soft);
   --color-quiet: var(--quiet);
   --color-card-float: var(--card-float);
-
-  /* Alias temporales para clases viejas (Tailwind v4) */
-  --color-coral: var(--coral);
-  --color-deep-coral: var(--deep-coral);
-  --color-cream: var(--cream);
-  --color-warm-cream: var(--warm-cream);
-  --color-dark: var(--dark);
-  --color-warm-dark: var(--warm-dark);
-  --color-muted: var(--muted);
-  --color-light-muted: var(--light-muted);
-  --color-light-border: var(--light-border);
 
   /* Fuentes: Geist para todo, JetBrains Mono para el stack técnico */
   --font-sans: var(--font-geist);
@@ -323,4 +321,9 @@ body {
   .group:hover .sol-pop0, .group:hover .sol-pop1 {
     animation: none !important;
   }
+}
+
+/* ─── Logo zentriq: oculta la "cometa" animada del símbolo en reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .zq-comet { display: none; }
 }

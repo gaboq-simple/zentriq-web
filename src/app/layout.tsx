@@ -81,9 +81,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
     apple: '/apple-icon',
   },
